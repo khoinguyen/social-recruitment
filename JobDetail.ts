@@ -1,1 +1,4 @@
-import "./src/JobDetail"
+import JobDetail from "./src/JobDetail";
+
+
+JobDetail();
