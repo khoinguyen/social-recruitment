@@ -1,5 +1,5 @@
 import qs from 'query-string';
-import {getReferralById, getJobByReferral, generateShareUrl} from './data-models';
+import {getReferralById, getJobByReferral, generateShareUrl, applyForJob} from './data-models';
 import parse from 'url-parse';
 
 const ref = (search) => {
@@ -27,7 +27,8 @@ const share = (event) => {
     console.log(parsed);
     parsed.query = '?ref=' + ref.id
     let url = parsed.toString();
-    $('.link-shareable-url').attr('href', url).text(url);
+    $("#share-modal .modal-body").prepend("<p class='bg-success'>Your shareable URL are: "+url+"</p>");
+    // $('.link-shareable-url').attr('href', url).text(url);
   });
 }
 
@@ -35,6 +36,9 @@ const apply = (event) => {
   event.preventDefault();
   const data = formData($("#apply-form"));
   console.log('apply' + JSON.stringify(data));
+  applyForJob(data).then( (applicant) => {
+
+  });
 }
 
 export default() => {
