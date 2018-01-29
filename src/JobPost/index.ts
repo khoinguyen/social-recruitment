@@ -1,6 +1,12 @@
 import "./JobPost.scss";
 import db from "../includes/firestore";
+import parse from 'url-parse';
 
+const getAbsURL = (baseURL, qs) => {
+    let url = parse(baseURL, location);
+    url.query=qs;
+    return url.toString();
+}
 class JobPost {
 
     $form: any;
@@ -31,7 +37,7 @@ class JobPost {
     };
 
     showRefURL(randomReferralID: string) {
-        const refURL = `http://127.0.0.1:8887/JobDetail.html?ref=${randomReferralID}`;
+        const refURL = getAbsURL('JobDetail.html', `ref=${randomReferralID}`);
         this.$referralAlert.find('a.ref-url').text(refURL).attr('href', refURL);
         this.$referralAlert.show();
     }
@@ -67,6 +73,8 @@ class JobPost {
         this.jobCollectionRef.add(postDataObj)
             .then((docRef) => {
                 const randomJobID = docRef.id;
+                const url = getAbsURL('ApplicantList.html', "id="+randomJobID);
+                $(".applicants-url").attr('href', url).text(url);
                 this.submitReferral(data, randomJobID);
                 console.log('Job added:', docRef);
             })
@@ -88,13 +96,13 @@ class JobPost {
             return;
         }
 
-        const jobPath = `firestore.googleapis.com/project/jobrefer-cec74/database/(default)/documents/jobs/${randomJobID}`;
+        const jobPath = `jobs/${randomJobID}`;
 
         data.forEach(item => {
             if (item.name === "username") postDataObj["username"] = item.value;
         });
 
-        postDataObj["job"] = jobPath;
+        postDataObj["job"] = db.collection('jobs').doc(randomJobID);
 
         this.referralCollectionRef.add(postDataObj)
             .then((docRef) => {

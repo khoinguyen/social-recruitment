@@ -63,7 +63,7 @@ export const applyForJob = (user) => {
   return db
     .collection('applicants')
     .add( {
-      job: currentJob,
+      job: currentJob.ref,
       referrals: trackback,
       name: user.name,
       email: user.email,

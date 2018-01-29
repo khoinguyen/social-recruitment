@@ -62,6 +62,6 @@ typings/
 *.css
 *.css.map
 !public/**/*.js
-
+!src/JobDetail/data-models.js
 .DS_Store
 !/public/**/*.css

@@ -27,7 +27,7 @@ const share = (event) => {
     console.log(parsed);
     parsed.query = '?ref=' + ref.id
     let url = parsed.toString();
-    $("#share-modal .modal-body").prepend("<p class='bg-success'>Your shareable URL are: "+url+"</p>");
+    $("#share-modal .modal-body").prepend("<p class='alert alert-success'>Your shareable URL are: <a href='%url%'>%url%</a></p>".replace(/\%url\%/g, url));
     // $('.link-shareable-url').attr('href', url).text(url);
   });
 }
@@ -37,7 +37,7 @@ const apply = (event) => {
   const data = formData($("#apply-form"));
   console.log('apply' + JSON.stringify(data));
   applyForJob(data).then( (applicant) => {
-
+    $("#apply-modal .modal-body .alert-success").removeClass('hidden');
   });
 }
 
@@ -51,11 +51,16 @@ export default() => {
       const data = job.data();
       const title = data.title;
       const url = data.url;
-
-      $('.job-title').text(title);
-      $(".job-url")
+      try {
+        new URL(url);
+        $(".job-url")
         .attr('href', url)
         .text(title);
+      } catch (e) {
+        $('.job-description').html(url);
+      }
+      $('.job-title').text(title);
+      
 
       $('.gen-share-btn').on('click', share);
       $('.confirm-apply-btn').on('click', apply);
