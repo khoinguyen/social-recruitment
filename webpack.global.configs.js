@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 const globalConfigs = {
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js']
@@ -48,6 +50,13 @@ const globalConfigs = {
 						]
 					}
 				}
+			},
+			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader', 'sass-loader']
+				})
 			}
 		]
 	}

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const globalConfigs = require('./webpack.global.configs');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const thisConfigs = {
 	entry: {
@@ -16,7 +17,12 @@ const thisConfigs = {
 	externals: {
 		jquery: 'jQuery'
 	},
-	watch: true
+	watch: true,
+	plugins: [
+		new ExtractTextPlugin({
+			filename: "[name].css"
+		})
+	]
 };
 
 module.exports = Object.assign(globalConfigs, thisConfigs);
