@@ -32,7 +32,7 @@ class JobPost {
 
     showRefURL(randomReferralID: string) {
         const refURL = `http://127.0.0.1:8887/JobDetail.html?ref=${randomReferralID}`;
-        this.$referralAlert.find('a.ref-url').text(refURL).attr('href', refURL)
+        this.$referralAlert.find('a.ref-url').text(refURL).attr('href', refURL);
         this.$referralAlert.show();
     }
 
@@ -41,18 +41,12 @@ class JobPost {
         { 'name': "title", 'value': string },
         { 'name': "url", 'value': string },
         { 'name': "bounty", 'value': string }]) => {
-
-        const now: number = Date.now();
-        const randomJobID: string = "jobID_" + now;
-        const randomReferralID: string = "refID_" + now;
-
-        this.submitJob(data, randomJobID);
-        this.submitReferral(data, randomJobID, randomReferralID);
-        this.showRefURL(randomReferralID)
+        
+        this.submitJob(data);
 
     };
 
-    submitJob(data, randomJobID) {
+    submitJob(data) {
 
         let postDataObj = {
             status: "OPEN"
@@ -70,9 +64,11 @@ class JobPost {
             if (item.name === "bounty") postDataObj["bounty"] = item.value
         });
 
-        this.jobCollectionRef.doc(randomJobID).set(postDataObj)
-            .then(() => {
-                console.log(randomJobID, postDataObj);
+        this.jobCollectionRef.add(postDataObj)
+            .then((docRef) => {
+                const randomJobID = docRef.id;
+                this.submitReferral(data, randomJobID);
+                console.log('Job added:', docRef);
             })
             .catch((error) => {
                 console.error("Error writing document: ", error);
@@ -80,7 +76,7 @@ class JobPost {
 
     }
 
-    submitReferral(data, randomJobID, randomReferralID) {
+    submitReferral(data, randomJobID) {
 
         let postDataObj = {
             job: "", trackback: [], type: "system", username: ""
@@ -100,9 +96,11 @@ class JobPost {
 
         postDataObj["job"] = jobPath;
 
-        this.referralCollectionRef.doc(randomReferralID).set(postDataObj)
-            .then(() => {
-                console.log(randomReferralID, postDataObj)
+        this.referralCollectionRef.add(postDataObj)
+            .then((docRef) => {
+                const randomReferralID = docRef.id;
+                this.showRefURL(randomReferralID);
+                console.log('Referral added:', docRef);
             })
             .catch((error) => {
                 console.error("Error writing document: ", error);
