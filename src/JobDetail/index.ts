@@ -51,11 +51,16 @@ export default() => {
       const data = job.data();
       const title = data.title;
       const url = data.url;
-
-      $('.job-title').text(title);
-      $(".job-url")
+      try {
+        new URL(url);
+        $(".job-url")
         .attr('href', url)
         .text(title);
+      } catch (e) {
+        $('.job-description').html(url);
+      }
+      $('.job-title').text(title);
+      
 
       $('.gen-share-btn').on('click', share);
       $('.confirm-apply-btn').on('click', apply);

@@ -57,6 +57,16 @@
 <div class="container">
     <div class="page-job-post">
         <h1 class="m-b-lg">Job Post</h1>
+        <div id="referralAlert" class="alert alert-success animated fadeInDown" role="alert" hidden>
+                <strong>Your referral URL:</strong>
+                <a target="_blank" class="ref-url" href="#">
+                    
+                </a><br />
+                <strong>Your Applicants:</strong>
+                <a target="_blank" class="applicants-url" href="#">
+                    
+                </a>
+            </div>
         <form id="jobPostForm" class="m-b-lg">
             <div class="form-group">
                 <label for="userName">Your Name</label>
@@ -74,15 +84,10 @@
             <div class="form-group">
                 <label for="bounty">Bounty</label>
                 <input type="number" class="form-control" id="bounty" placeholder="Bounty, in Points" name="bounty">
-            </div>g
+            </div>
             <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
         </form>
-        <div id="referralAlert" class="alert alert-success animated fadeInDown" role="alert" hidden>
-            <strong>Your referral URL:</strong>
-            <a target="_blank" class="ref-url" href="http://127.0.0.1:8887/JobDetail.html?ref=xPqxqoIeRm8LbuAr6P76#">
-                http://127.0.0.1:8887/JobDetail.html?ref=xPqxqoIeRm8LbuAr6P76#
-            </a>
-        </div>
+        
     </div>
 </div>
 </body>
