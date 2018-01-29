@@ -62,4 +62,5 @@ typings/
 *.css
 *.css.map
 !public/**/*.js
+
 .DS_Store
