@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "allowJs": true,
+        "sourceMap": true,
+        "removeComments": true,
+        "baseUrl": ".",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./typeRoot"
+        ]
+    },
+    "include": [
+        "*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/node_modules",
+        "**/ui.search-results.ts",
+        "**/ui.profileSuggestionTooltips.ts",
+        "**/ui.page-make-cv-searchable.ts",
+        "**/ui.one-profile.ts",
+        "**/ui.job-detail.ts",
+        "**/job-pack.ts",
+        "**/ui.home.ts",
+        "**/ui.page-apply-multiple.ts",
+        "**/ui.footer.ts",
+        "**/ui.header.ts"
+    ]
+}

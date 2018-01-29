@@ -1,0 +1,36 @@
+{
+    "name": "vnw_ui",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {
+        "@types/bootstrap": "^3.3.36",
+        "@types/dotdotdot": "^1.6.34",
+        "@types/dropzone": "^5.0.2",
+        "@types/jquery": "^3.2.15",
+        "@types/node": "^8.0.53",
+        "@types/slick-carousel": "^1.6.32",
+        "@types/typeahead": "^0.11.31",
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.0.1",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-syntax-flow": "^6.18.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-assign": "^6.22.0",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "bootstrap": "^3.3.7",
+        "jquery": "^3.2.1",
+        "ts-loader": "^3.2.0",
+        "typescript": "^2.5.2",
+        "webpack": "^3.8.1"
+    },
+    "scripts": {
+        "webpack:build": "node_modules/.bin/webpack --config ./webpack.typescript.dev.config.js",
+        "webpack:release": "node_modules/.bin/webpack --config ./webpack.typescript.prod.config.js"
+    },
+    "devDependencies": {
+        "eslint-config-google": "^0.9.1"
+    }
+}
