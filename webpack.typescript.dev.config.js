@@ -3,7 +3,8 @@ const globalConfigs = require('./webpack.global.configs');
 
 const thisConfigs = {
 	entry: {
-		'App': './App.ts'
+		'JobDetail': './JobDetail.ts',
+		'JobPost': './JobPost.ts'
 	},
 	output: {
 		filename: '[name].js',
