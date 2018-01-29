@@ -88,13 +88,13 @@ class JobPost {
             return;
         }
 
-        const jobPath = `firestore.googleapis.com/project/jobrefer-cec74/database/(default)/documents/jobs/${randomJobID}`;
+        const jobPath = `jobs/${randomJobID}`;
 
         data.forEach(item => {
             if (item.name === "username") postDataObj["username"] = item.value;
         });
 
-        postDataObj["job"] = jobPath;
+        postDataObj["job"] = db.collection('jobs').doc(randomJobID);
 
         this.referralCollectionRef.add(postDataObj)
             .then((docRef) => {
