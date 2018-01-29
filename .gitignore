@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+/JobPost.css
+/JobPost.css.map
+/JobPost.js.map
+/JobPost.js
+/JobDetail.js
+/JobDetail.js.map
