@@ -1,6 +1,5 @@
 import qs from 'query-string';
 import firestore from '../includes/firestore';
-import $ from 'jquery';
 
 const ref = (search) => {
   const query =  qs.parse(search);
