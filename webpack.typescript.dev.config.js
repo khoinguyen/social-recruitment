@@ -5,7 +5,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const thisConfigs = {
 	entry: {
 		'JobDetail': './JobDetail.ts',
-		'JobPost': './JobPost.ts'
+		'JobPost': './JobPost.ts',
+		'ApplicantList': './ApplicantList.ts'
 	},
 	output: {
 		filename: '[name].js',
