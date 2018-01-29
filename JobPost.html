@@ -56,29 +56,34 @@
 <div class="container">
     <div class="page-job-post">
         <h1 class="m-b-lg">Job Post</h1>
-        <form class="m-b-lg">
+        <form id="jobPostForm" class="m-b-lg">
+            <div class="form-group">
+                <label for="userName">Your Name</label>
+                <input type="text" class="form-control" id="userName" placeholder="Your Name" name="username">
+            </div>
             <div class="form-group">
                 <label for="title">Job Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Email">
+                <input type="text" class="form-control" id="title" placeholder="Job title" name="title">
             </div>
             <div class="form-group">
                 <label for="url">Original Job URL</label>
-                <input type="text" class="form-control" id="url" placeholder="Your Job URL">
+                <input type="text" class="form-control" id="url" placeholder="Your Job URL" name="url">
             </div>
             <div class="form-group">
                 <label for="bounty">Bounty</label>
-                <input type="text" class="form-control" id="bounty" placeholder="Bounty, in Points">
+                <input type="number" class="form-control" id="bounty" placeholder="Bounty, in Points" name="bounty">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" id="submitButton" class="btn btn-default">Submit</button>
         </form>
-        <div class="alert alert-success" role="alert">
+        <div id="referralAlert" class="alert alert-success" role="alert" hidden>
             <strong>Your referral URL:</strong>
-            <a href="http://localhost:63343/social-recruitment/JobPost.html?_ijt=80rfs2l55hubpna7od8k25nii">
-                http://localhost:63343/social-recruitment/JobPost.html?_ijt=80rfs2l55hubpna7od8k25nii
+            <a target="_blank" class="ref-url" href="http://127.0.0.1:8887/JobDetail.html?ref=xPqxqoIeRm8LbuAr6P76#">
+                http://127.0.0.1:8887/JobDetail.html?ref=xPqxqoIeRm8LbuAr6P76#
             </a>
         </div>
     </div>
 </div>
 </body>
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="JobPost.js"></script>
 </html>
