@@ -1,68 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./public/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./public/bootstrap/css/bootstrap.css" />
 </head>
+
 <body>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                        aria-controls="navbar">
+                    aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-title" href="#"></a>
+                <a class="navbar-brand page-title job-title" href="#"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Dropdown
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li>
+                                <a href="#">Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another action</a>
+                            </li>
+                            <li>
+                                <a href="#">Something else here</a>
+                            </li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li>
+                                <a href="#">Separated link</a>
+                            </li>
+                            <li>
+                                <a href="#">One more separated link</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../navbar/">Default</a></li>
-                    <li class="active"><a href="./">Static top
-                        <span class="sr-only">(current)</span>
-                    </a></li>
-                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                    <li>
+                        <a href="../navbar/">Default</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Static top
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../navbar-fixed-top/">Fixed top</a>
+                    </li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </nav>
     <div class="container">
         <div class="jumbotron">
-            <h1 class='page-title'></h1>
-            <p>Follow the link for job detail: <a class="job-url" href="#"></a></p>
+            <h1 class='job-title'></h1>
+            <p>Follow the link for job detail:
+                <a class="job-url" href="#"></a>
+            </p>
             <p>
-                <a class="btn btn-lg btn-primary apply-btn" href="#" role="button">Apply this Job</a>
-                <a class="btn btn-lg btn-primary share-btn" href="#" role="button">Share & Earn</a>
+                <button class="btn btn-lg btn-primary apply-btn" role="button" data-toggle="modal" data-target="#apply-modal">Apply this Job</button>
+                <button class="btn btn-lg btn-primary share-btn" role="button" data-toggle="modal" data-target="#share-modal">Share & Earn</button>
             </p>
         </div>
     </div>
+
+
+    <!-- Apply Modal -->
+    <div class="modal fade" id="apply-modal" tabindex="-1" role="dialog" aria-labelledby="ApplyModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="ApplyModalLabel">Apply to '
+                        <span class="job-title"></span>'
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form id="apply-form">
+                        <div class="form-group">
+                            <label for="input-name">Name</label>
+                            <input type="text" class="form-control input-name" id="input-apply-name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-email">Email</label>
+                            <input type="email" class="form-control input-email" id="input-apply-email" placeholder="Your Email">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary confirm-apply-btn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Apply Modal -->
+
+
+    <!-- Share Modal -->
+    <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="ShareModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="ShareModalLabel">Share to earn on '
+                        <span class="job-title"></span>'
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form id="share-form">
+                    <div class="form-group">
+                        <label for="input-name">Name</label>
+                        <input type="text" class="form-control input-name" id="input-share-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-email">Email</label>
+                        <input type="email" class="form-control input-email" id="input-share-email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="ref-url">Enter your information above for sharable URL</label>
+                        <button class="btn btn-default gen-share-btn">Generate</button> <br/>
+
+                                <a href="" class='link-shareable-url'></a>
+
+                    </div>
+                </form>
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Share Modal -->
 </body>
+
 <script src="JobDetail.js"></script>
+<script src="./public/jquery/jquery.min.js"></script>
+<script src="./public/bootstrap/js/bootstrap.min.js"></script>
 
 </html>

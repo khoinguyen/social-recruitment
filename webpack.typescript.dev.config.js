@@ -14,9 +14,9 @@ const thisConfigs = {
 		libraryTarget: 'window',
 		libraryExport: "default"
 	},
-	// externals: {
-	// 	jquery: 'jQuery'
-	// },
+	externals: {
+		jquery: 'jQuery'
+	},
 	watch: true,
 	plugins: [
 		new ExtractTextPlugin({

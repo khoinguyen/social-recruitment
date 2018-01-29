@@ -1,35 +1,59 @@
 import qs from 'query-string';
-import firestore from '../includes/firestore';
-import $ from 'jquery';
+import {getReferralById, getJobByReferral, generateShareUrl} from './data-models';
+import parse from 'url-parse';
 
 const ref = (search) => {
-  const query =  qs.parse(search);
-  return query.ref ? query.ref : "";
+  const query = qs.parse(search);
+  return query.ref
+    ? query.ref
+    : "";
 }
 
-
-const share = () => {
-  console.log('share');
+const formData = (form) => {
+  return {
+    name: form
+      .find('.input-name')
+      .val(),
+    email: form
+      .find('.input-email')
+      .val()
+  }
+}
+const share = (event) => {
+  event.preventDefault();
+  const data = formData($("#share-form"));
+  generateShareUrl(data).then( (ref) => {
+    let parsed = parse('JobDetail.html', location, false);
+    console.log(parsed);
+    parsed.query = '?ref=' + ref.id
+    let url = parsed.toString();
+    $('.link-shareable-url').attr('href', url).text(url);
+  });
 }
 
-const apply = () => {
-  console.log('apply');
+const apply = (event) => {
+  event.preventDefault();
+  const data = formData($("#apply-form"));
+  console.log('apply' + JSON.stringify(data));
 }
 
-export default () => {
+export default() => {
   const _ref = ref(location.search);
 
-  firestore.collection('referrals').doc(_ref).get().then((doc) => {
-    doc.data().job.get().then( (job) => {
+  getReferralById(_ref)
+    .then(getJobByReferral)
+    .then((job) => {
+      console.log(job);
       const data = job.data();
       const title = data.title;
-      const url   = data.url;
+      const url = data.url;
 
-      $('.page-title').text(title);
-      $(".job-url").attr('href', url).text(title);
+      $('.job-title').text(title);
+      $(".job-url")
+        .attr('href', url)
+        .text(title);
 
-      $(".apply-btn").on('click', apply);
-      $(".share-btn").on('click', share);
-    } );
-  })
+      $('.gen-share-btn').on('click', share);
+      $('.confirm-apply-btn').on('click', apply);
+    });
 }
